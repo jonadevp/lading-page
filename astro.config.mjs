@@ -1,11 +1,91 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, fontProviders} from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/inter-latin-400-normal.woff2"],
+          },
+          {
+            weight: 500,
+            style: "normal",
+            src: ["./src/assets/fonts/inter-latin-500-normal.woff2"],
+          },
+          {
+            weight: 600,
+            style: "normal",
+            src: ["./src/assets/fonts/inter-latin-600-normal.woff2"],
+          },
+
+          {
+            weight: 700,
+            style: "normal",
+            src: ["./src/assets/fonts/inter-latin-700-normal.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "JetBrains Mono",
+      fallbacks: ["monospace"],
+      cssVariable: "--font-jetbrains",
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/jetbrains-mono-latin-400-normal.woff2"],
+          },
+          {
+            weight: 500,
+            style: "normal",
+            src: ["./src/assets/fonts/jetbrains-mono-latin-500-normal.woff2"],
+          },
+          {
+            weight: 600,
+            style: "normal",
+            src: ["./src/assets/fonts/jetbrains-mono-latin-600-normal.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Plus Jakarta Sans",
+      cssVariable: "--font-plus-jakarta-sans",
+      options: {
+        variants: [
+          {
+            weight: 600,
+            style: "normal",
+            src: ["./src/assets/fonts/plus-jakarta-sans-latin-600-normal.woff2"],
+          },
+          {
+            weight: 700,
+            style: "normal",
+            src: ["./src/assets/fonts/plus-jakarta-sans-latin-700-normal.woff2"],
+          },
+          {
+            weight: 800,
+            style: "normal",
+            src: ["./src/assets/fonts/plus-jakarta-sans-latin-800-normal.woff2"],
+          },
+        ],
+      },
+    },
+  ],
 });
