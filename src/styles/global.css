@@ -1,11 +1,35 @@
 @import "tailwindcss";
-
-@theme {
-    --color-surface: #dae2fd;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-    --font-sans: var(--font-inter);
-    --font-display: var(--font-plus-jakarta-sans);
-    --font-mono: var(--font-jetbrains);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-plus-jakarta-sans);
+  --font-mono: var(--font-jetbrains);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    @apply  font-sans;
+  }
+
+  h1, h2, h3 {
+    @apply font-display;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
