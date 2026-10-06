@@ -1,0 +1,106 @@
+---
+import ThemeToggle from "@components/ThemeToggle.astro";
+import type { MenuItems } from "@/types/menu-items";
+
+const navItems: MenuItems[] = [
+  {
+    title: "Home",
+    label: "home",
+    url: "/#home",
+  },
+
+  {
+    title: "Sobre mi",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "#/proyectos",
+  },
+
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "#/experiencia",
+  },
+
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "#/contacto",
+  },
+];
+---
+
+<header
+  class="fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] top-4 w-[95%] max-w-2xl"
+>
+  <nav
+    class="header-nav flex gap-x-1 px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 dark:text-gray-300 bg-white dark:bg-slate-700 justify-center items-center border border-slate-200 dark:border-slate-500"
+  >
+    {
+      navItems.map((item) => (
+        <a
+          aria-label={item.label}
+          href={item.url}
+          class="py-1.5 px-4 font-mono text-sm font-semibold text-slate-700 dark:text-shadow-gray-300 hover:text-blue-700 transition-all duration-300 ease-out hover:scale-110  rounded-lg"
+        >
+          {item.title}
+        </a>
+      ))
+    }
+
+    <div class="ml-2 pl-3 border-l border-gray-600">
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const navItems = document.querySelectorAll<HTMLAnchorElement>("header nav a");
+    const sections = document.querySelectorAll("section");
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+      if(entry.isIntersecting) { 
+        navItems.forEach((item: HTMLAnchorElement) => {
+          if(item.getAttribute("aria-label") === entry.target.id) { 
+            item.classList.add("text-blue-500", "dark:text-blue-400", "bg-blue-400/10")
+            item.classList.remove("text-slate-700", "dark:text-slate-300")
+          } else {
+            item.classList.remove("text-bue-500", "dark:text-blue-400", "bg-blue-400/10")
+            item.classList.add("text-slate-600", "dark:text-slate-300")
+          }
+        })
+      }
+
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  });
+
+</script>
