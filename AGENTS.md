@@ -1,22 +1,23 @@
-## Development
+## Stack
 
-When starting the dev server, use background mode:
+Astro 7 (static, no framework components) + Tailwind CSS 4 via `@tailwindcss/vite`. Single package, pnpm. Node >= 22.12.
 
-```
-astro dev --background
-```
+## Commands
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+- `pnpm dev` — dev server (use `astro dev --background` and manage with `astro dev stop|status|logs`)
+- `pnpm build` — production build; this is the only real verification step; there are no test/lint/typecheck scripts
+- `pnpm astro check` — typecheck, but `@astrojs/check` is NOT installed; add it before this works
 
-## Documentation
+## Gotchas
 
-Full documentation: https://docs.astro.build
+- Tailwind 4: no `tailwind.config.*`; theme tokens and the dark variant live in `src/styles/global.css` (`@theme inline`, `@custom-variant dark`). Dark mode is class-based (`.dark` on `<html>`, set by an inline script in `Layout.astro` and toggled via localStorage `theme` key `"dark"|"light"|"system"`).
+- Fonts are loaded through Astro's `fonts` config in `astro.config.mjs` (local woff2 in `src/assets/fonts/`); never add `<link>` tags for them — use the `--font-*` CSS variables / `--font-sans|display|mono` utilities.
+- Page content is data-driven from `src/cv.json` — prefer editing it over hardcoding in components.
+- Path aliases (`@components`, `@layouts`, `@services`, `@types`, `@/*`) are defined in `tsconfig.json`; note `@services`/`@types` dirs don't exist yet.
+- `pnpm-workspace.yaml` exists only for `allowBuilds` (esbuild, sharp) — this is NOT a monorepo; don't add workspace packages to it without intent.
+- View transitions are on (`ClientRouter` in Layout); any theme/script side effects must survive `astro:page-load`.
+- README.md is the stock Astro starter template; ignore it. CLAUDE.md duplicates the dev-server section here.
 
-Consult these guides before working on related tasks:
+## Docs
 
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+https://docs.astro.build
