@@ -1,0 +1,114 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+    "basics": {
+      "name": "Jonathan Sanchez Rodríguez",
+      "label": "Full-Stack Developer (React/Next.js)",
+      "image": "",
+      "email": "jonadevp@gmail.com",
+      "phone": "+52 274 115 1616",
+      "url": "https://github.com/jonadevp",
+      "summary": "Desarrollador con más de 3 años de experiencia construyendo soluciones web escalables. Mi formación en Sistemas Computacionales y Administrativos me permite traducir requerimientos de negocio en código eficiente, destacando por mi profundo conocimiento en comercio electrónico multicanal. Especializado en la creación de interfaces modernas con React/Next.js y apasionado por el aprendizaje continuo frente a nuevas tecnologías.",
+      "location": {
+        "address": "Fracc. Tlacotengo, Geovillas de las Flores",
+        "postalCode": "94472",
+        "city": "Fortín",
+        "region": "Veracruz",
+        "countryCode": "MX"
+      },
+      "profiles": [
+        {
+          "network": "GitHub",
+          "username": "jonadevp",
+          "url": "https://github.com/jonadevp"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "Corporativo Empresarial y de Servicios Servitae",
+        "position": "E-commerce Specialist & Web Developer",
+        "location": "Córdoba, Veracruz, México",
+        "startDate": "2024-02-01",
+        "endDate": "2026-09-01",
+        "summary": "Desarrollo web (CMS) y optimización de canales de venta multicanal.",
+        "highlights": [
+          "Diseñé y puse en marcha la primera versión de los sitios web corporativos, estableciendo la presencia digital de la empresa.",
+          "Implementé y personalicé la tienda oficial en Mercado Libre, Amazon y Walmart, mejorando la identidad visual de la marca.",
+          "Creé banners publicitarios y recursos visuales optimizados en Adobe Photoshop, mejorando el CTR y la presentación del catálogo.",
+          "Administré el flujo completo de pedidos, atención al cliente y facturación electrónica en Amazon, Mercado Libre, Walmart y WooCommerce."
+        ]
+      },
+      {
+        "name": "Corporativo Empresarial y de Servicios Servitae",
+        "position": "Desarrollador",
+        "location": "Córdoba, Veracruz, México",
+        "startDate": "2025-12-01",
+        "endDate": "2026-09-01",
+        "summary": "Sistema de gestión de inventario multicanal.",
+        "highlights": [
+          "Estructuré esquemas y restricciones en PostgreSQL para el backend de un sistema de gestión de inventario multicanal (Amazon, Mercado Libre, Walmart, WooCommerce).",
+          "Desarrollé flujos de automatización con n8n para la sincronización de datos y configuración de alertas automáticas.",
+          "Diseñé y desarrollé en Appsmith un dashboard para gestionar el inventario, monitorear los productos publicados y publicar en los canales de venta seleccionados, con sugerencia de título y descripción mediante IA, y actualización y sincronización de imágenes en todos los canales."
+        ]
+      },
+      {
+        "name": "Recargas Electrónicas",
+        "position": "Soporte Técnico y Desarrollo Web",
+        "location": "Córdoba, Veracruz, México",
+        "startDate": "2021-10-01",
+        "endDate": "2023-12-01",
+        "summary": "Desarrollo del sitio corporativo y soporte a plataformas de recargas y pagos.",
+        "highlights": [
+          "Diseñé y desarrollé desde cero el sitio web corporativo (recargas5g.com) con Angular y Tailwind CSS.",
+          "Maqueté plantillas de correo electrónico reutilizables para flujos transaccionales (bienvenidas y credenciales de acceso).",
+          "Administré la recepción de depósitos y la aplicación de saldo para la base de usuarios de Pagaqui, Recargaki y Planetaemx.",
+          "Proporcioné soporte técnico de primer nivel a clientes de la plataforma."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad Veracruzana, Campus Ixtaczoquitlán",
+        "area": "Sistemas Computacionales Administrativos",
+        "studyType": "Licenciatura",
+        "startDate": "2017-08-01",
+        "endDate": "2021-09-01"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Frontend & UI",
+        "keywords": ["Next.js (App Router)", "Angular", "Astro", "Tailwind CSS", "shadcn/ui"]
+      },
+      {
+        "name": "Backend & APIs",
+        "keywords": ["Node.js", "Express", "REST APIs", "Webhooks"]
+      },
+      {
+        "name": "Lenguajes & Tipado",
+        "keywords": ["TypeScript", "JavaScript", "HTML", "CSS"]
+      },
+      {
+        "name": "Bases de Datos & ORM",
+        "keywords": ["Prisma ORM", "SQL", "PostgreSQL", "modelado de datos relacionales"]
+      },
+      {
+        "name": "Herramientas & Entorno",
+        "keywords": ["Git (Conventional Commits)", "Zod", "Contentful", "Windows"]
+      },
+      {
+        "name": "Diseño & E-commerce",
+        "keywords": ["Adobe Photoshop", "WordPress", "Mercado Libre", "Amazon", "Walmart"]
+      }
+    ],
+    "languages": [
+      {
+        "language": "Español",
+        "fluency": "Nativo"
+      },
+      {
+        "language": "Inglés",
+        "fluency": "Técnico (lectura de documentación y desarrollo)"
+      }
+    ]
+  }
