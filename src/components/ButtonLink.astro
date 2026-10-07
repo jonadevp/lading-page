@@ -1,0 +1,17 @@
+---
+const { label, href } = Astro.props;
+---
+
+<a 
+ class="inline-flex items-center gap-x-2 justify-center py-1.5 px-4 rounded-md shadow 
+        text-sm transition bg-blue-600 hover:bg-blue-700 text-white hover:scale-105 active:scale-95" 
+ href={href} 
+ rel="noopener"
+ target="_blank"
+ >
+  {Astro.slots.has("icon-left") && <slot name="icon-left" />}
+
+  <span>{label}</span>
+
+  {Astro.slots.has("icon-right") && <slot name="icon-right" />}
+</a>
