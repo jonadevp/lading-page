@@ -1,0 +1,26 @@
+[
+    {
+      "title": "Pagina para recargas electrónicas",
+      "description": "Homepage para recargas electrónicas en su version 3 para ofrecer venta de recargas electrónicas para todo tipo de negocio",
+      "thumbnail_img": "/recarga5g.webp",
+      "thumbnail_icon": null,
+      "link": "https://recarga5g.com",
+      "tags": ["ANGULAR", "TAILWIND", "CONTENTFUL"]
+    },
+    {
+      "title": "Tienda en linea para Servitae",
+      "description": "Plataforma E-commerce hecha con Wordpress y blocksy",
+      "thumbnail_img": null,
+      "thumbnail_icon": "WORDPRESS",
+      "link": null,
+      "tags": ["WORDPRESS"]
+    },
+    {
+      "title": "Sistema de gestión de inventario",
+      "description": "Sistema central de inventario con localización física por estantería, auditoría de actividad de usuarios y publicación unificada en canales de venta.",
+      "thumbnail_img": null,
+      "thumbnail_icon": "APPSMITH",
+      "link": null,
+      "tags": ["APPSMITH", "REACT", "N8N", "REDIS"]
+    }
+  ]
