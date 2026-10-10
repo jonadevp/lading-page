@@ -140,7 +140,7 @@ async function typeText(el: HTMLElement, text: string, signal: AbortSignal): Pro
   for (const ch of text) {
     typed += ch;
     el.textContent = typed;
-    await sleep(45 + Math.random() * 50, signal);
+    await sleep(95 + Math.random() * 50, signal);
   }
 }
 
