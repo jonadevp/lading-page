@@ -1,0 +1,34 @@
+---
+import SectionContainer from "@components/SectionContainer.astro";
+import SectionTitle from "@components/SectionTitle.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import projectsData from "@data/projects.json";
+import { TAGS, type TagKey } from "@/types/tags";
+import type { Project } from "@/types/projects";
+import Code from "@icons/Code.astro";
+
+const PROJECTS: Project[] = projectsData.map((p) => ({
+  title: p.title,
+  description: p.description,
+  thumbnail_img: p.thumbnail_img ?? undefined,
+  thumbnail_icon: p.thumbnail_icon
+    ? TAGS[p.thumbnail_icon as TagKey]
+    : undefined,
+  link: p.link ?? undefined,
+  tags: p.tags.map((key) => TAGS[key as TagKey]).filter(Boolean),
+}));
+
+---
+
+<SectionContainer id="proyectos">
+  <SectionTitle title="Proyectos">
+    <Code
+      class="size-8 text-slate-900 dark:text-slate-300"
+      slot="icon-left"
+    />
+  </SectionTitle>
+
+  <div class="mt-4 flex flex-col gap-8">
+    {PROJECTS.map((project) => <ProjectCard project={project} />)}
+  </div>
+</SectionContainer>

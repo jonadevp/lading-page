@@ -1,20 +1,21 @@
 ---
-import { basics, education } from "@/cv.json";
-const { name, label, profiles } = basics;
 import SectionContainer  from "@components/SectionContainer.astro";
 import SectionTitle  from "@components/SectionTitle.astro";
-import User from "@components/icons/User.astro";
+import InfoUser from "@icons/InfoUser.astro";
 ---
 
-<SectionContainer id="sobre-mi" class:list={'flex items-center flex-col lg:flex-row gap-y-4 lg:gap-x-8'}>
+<SectionContainer id="sobre-mi" class="flex items-center flex-col lg:flex-row gap-y-4 lg:gap-x-8">
 
     <div class="about-info [&>p]:mt-2 [&>p]:font-mono">
      <SectionTitle title="Sobre mi">
-         <User class:list={"size-8 text-slate-900 dark:text-slate-300"} slot="icon-left" />
+         <InfoUser class:list={"size-8 text-slate-900 dark:text-slate-300"} slot="icon-left" />
      </SectionTitle>
 
-     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+     <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
        <div class="space-y-4 font-mono text-slate-600 dark:text-slate-400 leading-relaxed">
+       <p class="">
+         Hola 👋, soy <strong>Jonathan Sanchéz Rodríguez</strong> en Github me encuentras como <strong>JonyDevp</strong>.
+       </p>
         <p>
           Mi viaje en el desarrollo web comenzó con la curiosidad de entender cómo funcionaban las páginas de internet. Hoy en día, me especializo en el ecosistema 
           <span class="text-indigo-600 dark:text-indigo-400 font-medium"> JavaScript/TypeScript</span>, construyendo desde interfaces dinámicas hasta complejas lógicas de negocio en el servidor.
@@ -23,7 +24,7 @@ import User from "@components/icons/User.astro";
           Disfruto especialmente resolver problemas arquitectónicos, diseñar bases de datos eficientes y conectar diferentes servicios a través de APIs e integraciones automatizadas.
       </p>
       <p>
-          Cuando no estoy escribiendo código, me encuentro explorando nuevas herramientas tecnológicas o compartiendo conocimiento con la comunidad.
+          Cuando no estoy escribiendo código, me encuentro explorando nuevas herramientas tecnológicas.
       </p>
        </div>
 

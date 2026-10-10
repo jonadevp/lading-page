@@ -1,0 +1,52 @@
+---
+import SectionContainer from "@components/SectionContainer.astro";
+import SectionTitle from "@components/SectionTitle.astro";
+import { work } from "@data/cv.json";
+import Briefcase from "@icons/Briefcase.astro";
+---
+
+<SectionContainer id="experiencia">
+  <SectionTitle title="Experiencia" > 
+    <Briefcase
+      class="size-8 text-slate-900 dark:text-slate-300"
+      slot="icon-left"
+    />
+  </SectionTitle>
+
+  <ul
+    class="mt-6 max-w-3xl border-l-2 border-slate-200 dark:border-slate-700 ml-3 md:ml-4"
+  >
+    {
+      work.map(({ name, startDate, endDate, position, highlights }) => {
+        const startYear = new Date(startDate).getUTCFullYear()
+        const endYear = endDate !== null ? new Date(endDate).getUTCFullYear() : "Actual";
+
+      return (
+       <li class="mb-8 ml-8 relative">
+          <span class="absolute -left-10.25 flex items-center justify-center w-5 h-5 rounded-full bg-slate-50 dark:bg-slate-900 ring-4 ring-slate-200 dark:ring-slate-700 border border-indigo-500" />
+
+          <div class="flex items-start lg:items-center lg:justify-between flex-col lg:flex-row">
+            <div class="mb-1">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                {position}
+              </h3>
+              <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                {name}
+              </span>
+            </div>
+
+            <time class="block mb-4 text-sm font-normal leading-none text-slate-900 dark:text-white font-mono">
+              {startYear} - {endYear}
+            </time>
+          </div>
+          <ul class="list-disc">
+            {highlights.map((highlight) => (
+              <li class="mb-4 text-base font-normal text-slate-600 dark:text-slate-400">{highlight}</li>
+            ))}
+          </ul>
+        </li>
+      )
+      })
+    }
+  </ul>
+</SectionContainer>
