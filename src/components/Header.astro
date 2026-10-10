@@ -1,106 +1,128 @@
 ---
 import ThemeToggle from "@components/ThemeToggle.astro";
-import type { MenuItems } from "@/types/menu-items";
+import  Navbar from "@components/NavBar.astro";
 
-const navItems: MenuItems[] = [
-  {
-    title: "Home",
-    label: "home",
-    url: "/#home",
-  },
-
-  {
-    title: "Sobre mi",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  },
-
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "#/proyectos",
-  },
-
-  {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "#/experiencia",
-  },
-
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "#/contacto",
-  },
-];
 ---
 
 <header
-  class="fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] top-4 w-[95%] max-w-2xl"
+  class="fixed lg:backdrop-blur-md lg:bg-white/30 lg:dark:bg-slate-700/10 top-0 left-0 w-full z-50 transition-all duration-700
+  ease-[cubic-bezier(0.23,1,0.32,1)]"
 >
-  <nav
-    class="header-nav flex gap-x-1 px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 dark:text-gray-300 bg-white dark:bg-slate-700 justify-center items-center border border-slate-200 dark:border-slate-500"
+  <div
+    class="max-w-6xl relative h-16 mx-auto px-4 sm:px-6 lg:px-8
+ flex flex-wrap items-center justify-between"
   >
-    {
-      navItems.map((item) => (
-        <a
-          aria-label={item.label}
-          href={item.url}
-          class="py-1.5 px-4 font-mono text-sm font-semibold text-slate-700 dark:text-shadow-gray-300 hover:text-blue-700 transition-all duration-300 ease-out hover:scale-110  rounded-lg"
+  <div
+  aria-hidden="true"
+  class="absolute lg:hidden inset-x-0 top-0 h-16 -z-10 backdrop-blur-md bg-white/30 dark:bg-slate-700/10"
+></div>
+    <div class="logo shrink-0 order-1">
+      <a
+        class="font-bold text-xl flex items-center gap-x-4 text-indigo-500"
+        href="#home"
+      >
+        <svg
+          class="size-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {item.title}
-        </a>
-      ))
-    }
-
-    <div class="ml-2 pl-3 border-l border-gray-600">
-      <ThemeToggle />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+        </svg>
+        <span class="font-mono tracking-tight">JonyDevp</span>
+      </a>
     </div>
-  </nav>
+
+      <Navbar />
+    <div
+      class="theme flex items-center gap-x-4 lg:block order-2 lg:order-3 shrink-0 p-2 rounded-lg relative"
+    >
+      <ThemeToggle />
+
+      <button type="button" id="toggle-nav" class="p-2 block cursor-pointer lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"/></svg>
+      </button>
+    </div>
+  </div>
 </header>
 
 <script>
+  let abortController: AbortController | null = null;
+  let observer: IntersectionObserver | null = null;
+
   document.addEventListener("astro:page-load", () => {
-    const navItems = document.querySelectorAll<HTMLAnchorElement>("header nav a");
-    const sections = document.querySelectorAll("section");
+    abortController?.abort();
+    observer?.disconnect();
+    abortController = new AbortController();
+    const { signal } = abortController;
 
-    const callback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry: IntersectionObserverEntry) => {
-      if(entry.isIntersecting) { 
-        navItems.forEach((item: HTMLAnchorElement) => {
-          if(item.getAttribute("aria-label") === entry.target.id) { 
-            item.classList.add("text-blue-500", "dark:text-blue-400", "bg-blue-400/10")
-            item.classList.remove("text-slate-700", "dark:text-slate-300")
-          } else {
-            item.classList.remove("text-bue-500", "dark:text-blue-400", "bg-blue-400/10")
-            item.classList.add("text-slate-600", "dark:text-slate-300")
-          }
-        })
-      }
+    const nav = document.getElementById("navbar");
+    const toggle = document.getElementById("toggle-nav");
+    if (!nav || !toggle) return;
 
-      });
+    // --- Menú móvil ---
+    const setOpen = (open: boolean) => {
+      nav.dataset.open = String(open);
+      toggle.setAttribute("aria-expanded", String(open));
     };
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+    toggle.addEventListener(
+      "click",
+      (e) => {
+        e.stopPropagation();
+        setOpen(nav.dataset.open !== "true");
+      },
+      { signal },
+    );
+
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (!nav.contains(e.target as Node)) setOpen(false);
+      },
+      { signal },
+    );
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false), { signal });
     });
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    // --- Resaltado del link activo ---
+    const navItems = nav.querySelectorAll<HTMLAnchorElement>("a");
+    const sections = document.querySelectorAll("section");
 
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navItems.forEach((item) => {
+            const active = item.getAttribute("aria-label") === entry.target.id;
+            item.classList.toggle("text-white", active);
+            item.classList.toggle("bg-slate-800", active);
+            item.classList.toggle("text-slate-700", !active);
+          });
+        });
+      },
+      { root: null, rootMargin: "0px", threshold: 0.3 },
+    );
+    observer = obs;
+    sections.forEach((section) => obs.observe(section));
 
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect()
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section)
-        })
-      }
-    }
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (document.visibilityState === "hidden") {
+          obs.disconnect();
+        } else {
+          sections.forEach((section) => obs.observe(section));
+        }
+      },
+      { signal },
+    );
   });
-
 </script>
