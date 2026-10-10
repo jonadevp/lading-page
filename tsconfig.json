@@ -6,10 +6,12 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@data/*": ["./src/data/*"],
+      "@icons/*": ["./src/components/icons/*"],
+      "@sections/*": ["./src/components/sections/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@services/*": ["./src/services/*"],
-      "@types/*": ["./src/types/*"]
+      "@data/*": ["./src/data/*"],
+      "@types/*": ["./src/types/*"],
     }
   }
 }
