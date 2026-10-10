@@ -2,8 +2,10 @@
 const { class: className, ...rest } = Astro.props;
 ---
 <svg 
-class={Astro.props.class}
-viewBox="0 0 228 120">
+viewBox="0 0 228 120"
+class={`${className || "size-4"}`}
+{...rest}
+>
 <path
     fill-rule="evenodd"
     clip-rule="evenodd"
