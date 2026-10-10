@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "Jonathan Sanchez Rodríguez",
+    "label": "Full-Stack Developer",
+    "image": "/src/me.webp",
+    "email": "jonadevp@gmail.com",
+    "phone": "+52 274 115 1616",
+    "url": "https://github.com/jonadevp",
+    "summary": "Desarrollador con más de 3 años de experiencia construyendo soluciones web escalables. Mi formación en Sistemas Computacionales y Administrativos me permite traducir requerimientos de negocio en código eficiente, destacando por mi profundo conocimiento en comercio electrónico multicanal. Especializado en la creación de interfaces modernas con React/Next.js y apasionado por el aprendizaje continuo frente a nuevas tecnologías.",
+    "location": {
+      "address": "Fracc. Tlacotengo, Geovillas de las Flores",
+      "postalCode": "94472",
+      "city": "Fortín",
+      "region": "Veracruz",
+      "countryCode": "MX"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "jonadevp",
+        "url": "https://github.com/jonadevp"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Corporativo Empresarial y de Servicios Servitae",
+      "position": "Desarrollador Backend",
+      "location": "Córdoba, Veracruz, México",
+      "startDate": "2026-01-01",
+      "endDate": "2026-09-01",
+      "highlights": [
+        "Diseñé y desarrollé el sistema central de gestión de inventario en Appsmith, con interfaces en React embebidas mediante iframes, implementando módulos para localización física de productos por estantería, auditoría de actividad de usuarios y publicación unificada en canales de venta.",
+        "Construí y orquesté flujos de trabajo de automatización en N8N para la gestión de activos visuales.",
+        "Implementé en N8N un flujo de descuento automático de inventario con cola de eventos en Redis: cada pedido nuevo se encola y otro flujo lo procesa, identifica el producto por SKU en PostgreSQL y descuenta la cantidad vendida en todas las tiendas.",
+        "Implementé nuevas tablas con PostgreSQL para alertas automáticas de control de stock, así como jerarquía de ubicación de estantes."
+      ]
+    },
+    {
+      "name": "Corporativo Empresarial y de Servicios Servitae",
+      "position": "E-commerce Specialist & Web Developer",
+      "location": "Córdoba, Veracruz, México",
+      "startDate": "2023-02-01",
+      "endDate": "2025-12-01",
+      "highlights": [
+        "Diseñé y desplegué los sitios web corporativos en WordPress, ejecutando la migración y adaptación de plantillas enfocadas en usabilidad (UX/UI) para canalizar la atracción de prospectos hacia WhatsApp Business.",
+        "Creé banners publicitarios y recursos visuales profesionales utilizando Adobe Photoshop, estandarizando la presentación del catálogo en las tiendas oficiales de Mercado Libre, Amazon y Walmart.",
+        "Gestioné inventario físico en almacén, conciliando el stock físico con los marketplaces.",
+        "Validé la recepción de mercancía nueva, ejecutando control de calidad.",
+        "Administré el alta y publicación de producto nuevo en todas las tiendas.",
+        "Administré el flujo completo de pedidos, atención al cliente y emisión de facturación electrónica a través de múltiples plataformas (Amazon, Mercado Libre, Walmart y WooCommerce)."
+      ]
+    },
+    {
+      "name": "Recargas Electrónicas",
+      "position": "Desarrollador Web y Soporte Técnico",
+      "location": "Córdoba, Veracruz, México",
+      "startDate": "2021-12-01",
+      "endDate": "2023-01-01",
+      "highlights": [
+        "Diseñé y desplegué el sitio web del negocio utilizando Angular y Tailwind, estableciendo la presencia digital del negocio.",
+        "Diseñé activos visuales y banners del negocio con Adobe Photoshop para redes sociales y notificaciones operativas como cierre de mes, estado del sistema y promociones.",
+        "Implementé y administré canales de comunicación mediante WhatsApp Business, segmentando por tipo de usuario.",
+        "Estandaricé el proceso de onboarding de usuarios desarrollando plantillas de correo en Stripo, optimizando la entrega de credenciales, manuales de usuario.",
+        "Administré la recepción de depósitos y la aplicación de saldo para la base de usuarios de las plataformas Pagaqui, Recargaki y Planetaemx.",
+        "Proporcioné asistencia técnica de primer nivel a clientes de las plataformas, asegurando el correcto uso de los servicios y la continuidad de sus operaciones."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Veracruzana, Campus Ixtaczoquitlán",
+      "area": "Sistemas Computacionales Administrativos",
+      "studyType": "Licenciatura",
+      "startDate": "2017-08-01",
+      "endDate": "2021-09-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend & UI",
+      "keywords": [
+        "Angular",
+        "Astro",
+        "Next.js",
+        "React",
+        "Tailwind",
+        "shadcn/ui"
+      ]
+    },
+    {
+      "name": "Backend & APIs",
+      "keywords": [
+        "Node.js",
+        "Express",
+        "Webhooks",
+        "N8N",
+        "Redis"
+      ]
+    },
+    {
+      "name": "Lenguajes & Tipado",
+      "keywords": [
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "name": "Bases de Datos & ORM",
+      "keywords": [
+        "PostgreSQL",
+        "Prisma",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Herramientas & Entorno",
+      "keywords": [
+        "Git",
+        "Zod",
+        "Appsmith",
+        "Contentful",
+        "Windows"
+      ]
+    },
+    {
+      "name": "Diseño & E-commerce",
+      "keywords": [
+        "Adobe Photoshop",
+        "WordPress",
+        "WooCommerce",
+        "Mercado Libre",
+        "Amazon",
+        "Walmart"
+      ]
+    },
+    {
+      "name": "Soporte técnico",
+      "keywords": [
+        "Soporte y mantenimiento de equipo de cómputo"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Técnico (lectura de documentación y desarrollo)"
+    }
+  ]
+}
