@@ -1,7 +1,6 @@
 ---
 import ThemeToggle from "@components/ThemeToggle.astro";
-import  Navbar from "@components/NavBar.astro";
-
+import Navbar from "@components/NavBar.astro";
 ---
 
 <header
@@ -12,10 +11,11 @@ import  Navbar from "@components/NavBar.astro";
     class="max-w-6xl relative h-16 mx-auto px-4 sm:px-6 lg:px-8
  flex flex-wrap items-center justify-between"
   >
-  <div
-  aria-hidden="true"
-  class="absolute lg:hidden inset-x-0 top-0 h-16 -z-10 backdrop-blur-md bg-white/30 dark:bg-slate-700/10"
-></div>
+    <div
+      aria-hidden="true"
+      class="absolute lg:hidden inset-x-0 top-0 h-16 -z-10 backdrop-blur-md bg-white/30 dark:bg-slate-700/10"
+    >
+    </div>
     <div class="logo shrink-0 order-1">
       <a
         class="font-bold text-xl flex items-center gap-x-4 text-indigo-500"
@@ -34,18 +34,33 @@ import  Navbar from "@components/NavBar.astro";
             stroke-width="2"
             d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
         </svg>
-        <span class="font-mono tracking-tight">JonyDevp</span>
+        <span class="font-mono tracking-tight bg-clip-text">JonaDevp</span>
       </a>
     </div>
 
-      <Navbar />
+    <Navbar />
     <div
       class="theme flex items-center gap-x-4 lg:block order-2 lg:order-3 shrink-0 p-2 rounded-lg relative"
     >
       <ThemeToggle />
 
-      <button type="button" id="toggle-nav" class="p-2 block cursor-pointer lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"/></svg>
+      <button
+        type="button"
+        id="toggle-menu"
+        class="p-2 block cursor-pointer lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          class="size-6"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"></path></svg
+        >
       </button>
     </div>
   </div>
@@ -57,44 +72,52 @@ import  Navbar from "@components/NavBar.astro";
 
   document.addEventListener("astro:page-load", () => {
     abortController?.abort();
-    observer?.disconnect();
     abortController = new AbortController();
+    observer?.disconnect();
     const { signal } = abortController;
 
     const nav = document.getElementById("navbar");
-    const toggle = document.getElementById("toggle-nav");
-    if (!nav || !toggle) return;
+    const toggleMenu = document.getElementById("toggle-menu");
+    const themesMenu = document.getElementById("themes-menu");
 
-    // --- Menú móvil ---
-    const setOpen = (open: boolean) => {
-      nav.dataset.open = String(open);
-      toggle.setAttribute("aria-expanded", String(open));
+    if (!nav || !toggleMenu) return;
+
+    const setOpen = (isOpen: boolean) => {
+      nav.dataset.open = String(isOpen);
+      toggleMenu.setAttribute("aria-expanded", String(isOpen));
     };
 
-    toggle.addEventListener(
-      "click",
-      (e) => {
+    toggleMenu.addEventListener("click", (e) => {
+        const willOpen = nav.dataset.open !== "true";
+
+        if (willOpen) {
+          themesMenu?.classList.remove("open");
+        }
         e.stopPropagation();
-        setOpen(nav.dataset.open !== "true");
+
+        setOpen(willOpen);
       },
       { signal },
     );
 
-    document.addEventListener(
-      "click",
-      (e) => {
+    document.addEventListener("click", (e) => {
         if (!nav.contains(e.target as Node)) setOpen(false);
       },
       { signal },
     );
 
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => setOpen(false), { signal });
-    });
-
-    // --- Resaltado del link activo ---
-    const navItems = nav.querySelectorAll<HTMLAnchorElement>("a");
+    const navItems = nav.querySelectorAll("a");
     const sections = document.querySelectorAll("section");
+
+    navItems.forEach((item) => {
+      item.addEventListener(
+        "click",
+        () => {
+          setOpen(false);
+        },
+        { signal },
+      );
+    });
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -110,7 +133,9 @@ import  Navbar from "@components/NavBar.astro";
       },
       { root: null, rootMargin: "0px", threshold: 0.3 },
     );
+
     observer = obs;
+
     sections.forEach((section) => obs.observe(section));
 
     document.addEventListener(
