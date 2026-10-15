@@ -2,7 +2,7 @@
     {
       "title": "Pagina para recargas electrónicas",
       "description": "Homepage para recargas electrónicas en su version 3 para ofrecer venta de recargas electrónicas para todo tipo de negocio",
-      "thumbnail_img": "/recarga5g.webp",
+      "thumbnail_img": "src/assets/recarga5g.webp",
       "thumbnail_icon": null,
       "link": "https://recarga5g.com",
       "tags": ["ANGULAR", "TAILWIND", "CONTENTFUL"]
