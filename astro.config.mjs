@@ -1,12 +1,22 @@
-// @ts-check
-import { defineConfig, fontProviders} from "astro/config";
+import { defineConfig, fontProviders, envField} from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import netlify from "@astrojs/netlify";
 
-// https://astro.build/config
+
 export default defineConfig({
+
+  env: {
+  schema:{
+    RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
+    TURNSTILE_SITE_KEY: envField.string({ context: "client", access: "public"}),
+    TURNSTILE_SECRET_KEY: envField.string({ context: "server", access: "secret"})   
+  }
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   fonts: [
     {
       provider: fontProviders.local(),
@@ -88,4 +98,11 @@ export default defineConfig({
       },
     },
   ],
+  adapter: netlify({
+    devFeatures: {
+      images: true,
+      environmentVariables: false,
+      edgeFunctions: false,
+    },
+  }),
 });
