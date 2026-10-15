@@ -3,14 +3,14 @@
   "basics": {
     "name": "Jonathan Sanchez Rodríguez",
     "label": "Full-Stack Developer",
-    "image": "/src/me.webp",
+    "image": "src/assets/me.webp",
     "email": "jonadevp@gmail.com",
-    "phone": "+52 274 115 1616",
+    "phone": "",
     "url": "https://github.com/jonadevp",
     "summary": "Desarrollador con más de 3 años de experiencia construyendo soluciones web escalables. Mi formación en Sistemas Computacionales y Administrativos me permite traducir requerimientos de negocio en código eficiente, destacando por mi profundo conocimiento en comercio electrónico multicanal. Especializado en la creación de interfaces modernas con React/Next.js y apasionado por el aprendizaje continuo frente a nuevas tecnologías.",
     "location": {
-      "address": "Fracc. Tlacotengo, Geovillas de las Flores",
-      "postalCode": "94472",
+      "address": "",
+      "postalCode": "",
       "city": "Fortín",
       "region": "Veracruz",
       "countryCode": "MX"
